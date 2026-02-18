@@ -1,0 +1,7 @@
+{
+  "name": "appLayout",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
