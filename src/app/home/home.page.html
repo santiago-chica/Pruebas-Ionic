@@ -7,44 +7,63 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12">
-        <div>
-          Test
-        </div>
-      </ion-col>
-      <ion-col>
-        <div>
-          Test
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
+ 
   <!-- Calculator -->
 
   <ion-grid class="calculator">
+    <!-- Display -->
+
+    <ion-row>
+      <ion-col size="12" class="display">
+        {{ getCurrentString() }}
+      </ion-col>
+    </ion-row>
+
     <!-- Ans % CE AC -->
     <ion-row>
       <ion-col size="3">
-        <ion-button class="dark-button">
+        <ion-button class="dark-button" (click)="addAnswer()">
           Ans
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="dark-button">
-          %
+        <ion-button class="red-button" (click)="clearOne()">
+          <-
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="red-button">
+        <ion-button class="red-button" (click)="clear()">
           CE
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="red-button">
+        <ion-button class="red-button" (click)="clear(true)">
           AC
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- sen cos tan exp -->
+    
+    <ion-row>
+      <ion-col size="3">
+        <ion-button class="dark-button" (click)="addCharacter('sen(')">
+          sen
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button class="dark-button" (click)="addCharacter('cos(')">
+          cos
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button class="dark-button" (click)="addCharacter('tan(')">
+          tan
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button class="dark-button" (click)="addCharacter('^')">
+          ^
         </ion-button>
       </ion-col>
     </ion-row>
@@ -52,22 +71,22 @@
     <!-- 7 8 9 / -->
     <ion-row>
       <ion-col size="3">
-        <ion-button class="gray-button">
+        <ion-button class="gray-button" (click)="addCharacter('7')">
           7
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="gray-button">
+        <ion-button class="gray-button" (click)="addCharacter('8')">
           8
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="gray-button">
+        <ion-button class="gray-button" (click)="addCharacter('9')">
           9
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="dark-button">
+        <ion-button class="dark-button" (click)="addCharacter('/')">
           /
         </ion-button>
       </ion-col>
@@ -76,22 +95,22 @@
     <!-- 4 5 6 * -->
     <ion-row>
       <ion-col size="3">
-        <ion-button class="gray-button">
+        <ion-button class="gray-button" (click)="addCharacter('4')">
           4
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="gray-button">
+        <ion-button class="gray-button" (click)="addCharacter('5')">
           5
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="gray-button">
+        <ion-button class="gray-button" (click)="addCharacter('6')">
           6
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="dark-button">
+        <ion-button class="dark-button" (click)="addCharacter('*')">
           *
         </ion-button>
       </ion-col>
@@ -100,22 +119,22 @@
     <!-- 1 2 3 - -->
     <ion-row>
       <ion-col size="3">
-        <ion-button class="gray-button">
+        <ion-button class="gray-button" (click)="addCharacter('1')">
           1
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="gray-button">
+        <ion-button class="gray-button" (click)="addCharacter('2')">
           2
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="gray-button">
+        <ion-button class="gray-button" (click)="addCharacter('3')">
           3
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="dark-button">
+        <ion-button class="dark-button" (click)="addCharacter('-')">
           -
         </ion-button>
       </ion-col>
@@ -124,22 +143,22 @@
     <!-- 0 00 . = -->
     <ion-row>
       <ion-col size="3">
-        <ion-button class="gray-button">
+        <ion-button class="gray-button" (click)="addCharacter('0')">
           0
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="gray-button">
+        <ion-button class="gray-button" (click)="addCharacter('00')">
           00
         </ion-button>
       </ion-col>
-      <ion-col size="3">
-        <ion-button class="gray-button">
+      <ion-col size="3" >
+        <ion-button class="gray-button" (click)="addCharacter('.')">
           .
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="dark-button">
+        <ion-button class="dark-button" (click)="addCharacter('+')">
           +
         </ion-button>
       </ion-col>
@@ -148,21 +167,21 @@
     <!-- 000 ( ) = -->
     <ion-row>
       <ion-col size="3">
-        <ion-button class="gray-button">
+        <ion-button class="gray-button" (click)="addCharacter('000')">
           000
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="dark-button">
+        <ion-button class="dark-button" (click)="addCharacter('(')">
           (
         </ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button class="dark-button">
+        <ion-button class="dark-button" (click)="addCharacter(')')">
           )
         </ion-button>
       </ion-col>
-      <ion-col size="3">
+      <ion-col size="3" (click)="calculateResult()">
         <ion-button class="dark-button">
           =
         </ion-button>
