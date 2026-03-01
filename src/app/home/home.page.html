@@ -14,8 +14,38 @@
     <!-- Display -->
 
     <ion-row>
+      <ion-col size="12" class="title">
+        Calculadora
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
       <ion-col size="12" class="display">
         {{ getCurrentString() }}
+      </ion-col>
+      <ion-col size="12" class="stored-result">
+        {{ getLastResultString() }}
+      </ion-col>
+    </ion-row>
+
+    <!-- e π -->
+
+    <ion-row>
+      <ion-col size="3">
+        <ion-button class="dark-blue-button" (click)="addCharacter('e')">
+          e
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">  
+        <ion-button class="dark-blue-button" (click)="addCharacter('π')">
+          π
+        </ion-button>
+      </ion-col>
+      <ion-col size="3"></ion-col>
+      <ion-col size="3">
+        <ion-button class="dark-blue-button" (click)="toggleRadianMode()">
+          {{ getRadianString() }}
+        </ion-button>
       </ion-col>
     </ion-row>
 
